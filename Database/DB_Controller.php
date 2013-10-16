@@ -72,7 +72,11 @@ class DB_Controller implements IDB_Functions {
 	public static function DeleteChallengeInstance($challenge){
 		self::getDB()->DeleteChallengeInstance($challenge);
 	}
-	 
+	
+	public static function DeleteChallengeAcceptance($challenge){
+		self::getDB()->DeleteChallengeAcceptance($challenge);
+	}
+	
 	public static function DeleteGame($game){
 		self::getDB()->DeleteGame($game);
 	}
