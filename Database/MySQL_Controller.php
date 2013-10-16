@@ -26,6 +26,7 @@ class MySQL_Controller {
     // This prevents SQL injection from occurring! Parameters passed in by users will be treated as strings, not as potential SQL calls
     public function executeAction($sql, $aParams=null) {
         $query = $this->handler->prepare($sql);
+//	print_r($sql . "\n" . $aParams[1]);
         if(isset($aParams)) {
             foreach($aParams as $key => &$value) {
                 // keys start at 1, not 0, for the PDO handler

@@ -198,7 +198,7 @@ a:hover {
      -moz-border-radius: 500px;
           border-radius: 500px;
 }
-
+/*
 .row {
   margin-left: -20px;
   *zoom: 1;
@@ -214,7 +214,7 @@ a:hover {
 .row:after {
   clear: both;
 }
-
+*/
 [class*="span"] {
   float: left;
   min-height: 1px;

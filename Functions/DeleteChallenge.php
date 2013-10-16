@@ -6,12 +6,12 @@ require_once '/home/content/c/j/c/cjcornell3/html/bluegame/Database/DB_Controlle
 class DeleteChallenge {
 	
 	private static $m_oChallenge;
-    public static function Execute ($Id)
+    public static function Execute ($challengeId)
     {	
-		$challenge = self::prepareDeletedChallenge($Id);
+		self::$m_oChallenge = self::prepareDeletedChallenge($challengeId);
 		// Call database function
-		DB_Controller::DeleteChallenge($challenge);
-        DB_Controller::Log("Controller", "Deleted challenge with Id = $challenge->ID()");
+		DB_Controller::DeleteChallenge(self::$m_oChallenge);
+        DB_Controller::Log("Controller", "Deleted challenge with Id = $challenge");
         return 0;
 	}
 

@@ -8,7 +8,10 @@ interface IDB_Functions {
     public static function AddPoints($points, $userId, $gameId);
 	public static function AddUser($user);
 	public static function DeleteChallenge($challengeId);
-	public static function DeleteUser($userId);
+	public static function DeleteChallengeInstance($challenge);
+	public static function DeleteChallengeAcceptance($challenge);
+	public static function DeleteUser($user);
+	public static function DeleteGame($game);
 	public static function GetActivities($user);
     public static function GetAllGame();
     public static function GetChallengeInstanceAcceptances($challengeInstanceID);

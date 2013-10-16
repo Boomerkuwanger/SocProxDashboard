@@ -61,12 +61,20 @@ class DB_Controller implements IDB_Functions {
         self::getDB()->AddPoints($points, $userId, $gameId);   
     }
 	
-    public static function DeleteUser($userId){
-		self::getDB()->DeleteUser($userId);
+    public static function DeleteUser($user){
+		self::getDB()->DeleteUser($user);
 	}
 	
-    public static function DeleteChallenge($challengeId){
-		self::getDB()->DeleteChallenge($challengeId);
+    public static function DeleteChallenge($challengeInstance){
+		self::getDB()->DeleteChallenge($challengeInstance);
+	}
+	
+	public static function DeleteChallengeInstance($challenge){
+		self::getDB()->DeleteChallengeInstance($challenge);
+	}
+	 
+	public static function DeleteGame($game){
+		self::getDB()->DeleteGame($game);
 	}
 	
 	public static function GetActivities($user){

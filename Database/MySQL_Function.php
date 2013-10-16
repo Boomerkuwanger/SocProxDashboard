@@ -100,17 +100,39 @@ class MySQL_Functions implements IDB_Functions {
         self::getDB()->executeAction($sql, $aToInsert);
     }
 	
-	public static function DeleteChallenge($challengeId){
-        $sql = "DELETE FROM Challenge WHERE ID=?";
+	public static function DeleteChallenge($challenge){
+        $sql = "DELETE FROM Challenge WHERE ChallengeID=?";
         $aParams = array();
-        $aParams[] = $challengeId->ID();
+        $aParams[] = $challenge->ID();
         self::getDB()->executeAction($sql, $aParams);
     }
 	
-	public static function DeleteUser($userId){
-        $sql = "DELETE FROM User WHERE ID=?";
-        $aToInsert = array();
-        $aToInsert[] = $userId->ID();
+	public static function DeleteChallengeInstance($challengeInstance){
+        $sql = "DELETE FROM ChallengeInstance WHERE ChallengeInstanceID=?";
+        $aParams = array();
+        $aParams[] = $challengeInstance->ID();
+        self::getDB()->executeAction($sql, $aParams);
+    }
+	
+	public static function DeleteChallengeAcceptance($challengeAcceptance){
+        $sql = "DELETE FROM ChallengeAcceptance WHERE ChallengeAcceptanceID=?";
+        $aParams = array();
+        $aParams[] = $challengeAcceptance->ID();
+        self::getDB()->executeAction($sql, $aParams);
+    }
+	
+	public static function DeleteGame($game){
+        $sql = "DELETE FROM Game WHERE GameID=?";
+        $aParams = array();
+        $aParams[] = $game->ID();
+        self::getDB()->executeAction($sql, $aParams);
+    }
+	
+	public static function DeleteUser($user){
+        $sql = "DELETE FROM User WHERE UserId=?";
+        $aParams = array();
+        $aParams[] = $user->ID();
+        print($user->ID());
         self::getDB()->executeAction($sql, $aParams);
     }
 	

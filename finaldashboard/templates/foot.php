@@ -4,4 +4,4 @@
 			document.write(unescape('%3Cscript type="text/javascript" src="./assets/js/jquery.min.js" %3E%3C/script%3E'));
 		}
 	</script>
-    <script src="./assets/js/bootstrap.min.js"></script>
+ 	<script src="./assets/js/bootstrap.min.js"></script>

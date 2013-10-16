@@ -1,24 +1,29 @@
 <?php
 require_once 'ChallengeInstanceChallenge.php';
-require_once '../Functions/AddUser.php';
-require_once '../Functions/AddGame.php';
 require_once '../Functions/AddChallenge.php';
-require_once '../Functions/GetActiveChallenges.php';
-require_once '../Functions/GetGames.php';
-require_once '../Functions/GetLogs.php';
-require_once '../Functions/VerifyChallenge.php';
 require_once '../Functions/AddChallengeInstance.php';
+require_once '../Functions/AddGame.php';
+require_once '../Functions/AddUser.php';
 require_once '../Functions/ConfirmChallenge.php';
-require_once '../Functions/RefreshChallengeInstance.php';
-require_once '../Functions/GetChallengeInstances.php';
+require_once '../Functions/DeleteChallenge.php';
+require_once '../Functions/DeleteUser.php';
+require_once '../Functions/DeleteGame.php';
+require_once '../Functions/DeleteChallengeAcceptance.php';
+require_once '../Functions/DeleteChallengeInstance.php';
+require_once '../Functions/GetActiveChallenges.php';
 require_once '../Functions/GetChallengeInstance.php';
+require_once '../Functions/GetChallengeInstances.php';
+require_once '../Functions/GetGames.php';
 require_once '../Functions/GetGlobalStats.php';
+require_once '../Functions/GetLogs.php';
 require_once '../Functions/GetStandings.php';
-require_once '../Functions/GetUserStats.php';
 require_once '../Functions/GetUsers.php';
+require_once '../Functions/GetUserStats.php';
 require_once '../Functions/LinkUser.php';
 require_once '../Functions/Login.php';
+require_once '../Functions/RefreshChallengeInstance.php';
 require_once '../Functions/UpdateProfile.php';
+require_once '../Functions/VerifyChallenge.php';
 require_once '/home/content/c/j/c/cjcornell3/html/bluegame/Database/DB_Controller.php';
 
 class Error
@@ -820,5 +825,70 @@ class TestController
 			return $challengeInstanceChallenge->ID().'+'.$user1->Username();
 		}
     }
+
+	/**
+     * Delete a challenge
+     *
+	 * @url GET /deleteChallenge/:cID
+     */
+    public function deleteChallenge($cID)
+    {
+    	if(0 < $cID)
+		{
+			DeleteChallenge::Execute($cID);
+		}
+	}
+	
+	/**
+     * Delete a user
+     *
+	 * @url GET /deleteUser/:uID
+     */
+    public function deleteUser($uID)
+    {
+    	if(0 < $uID)
+		{
+			DeleteUser::Execute($uID);
+		}
+	}
+	
+	/**
+     * Delete a game
+     *
+	 * @url GET /deleteGame/:gID
+     */
+    public function deleteGame($gID)
+    {
+    	if(0 < $gID)
+		{
+			DeleteGame::Execute($gID);
+		}
+	}
+	
+	/**
+     * Delete a challenge acceptance
+     *
+	 * @url GET /deleteChallengeAcceptance/:cID
+     */
+    public function deleteChallengeAcceptance($gID)
+    {
+    	if(0 < $gID)
+		{
+			DeleteChallengeAcceptance::Execute($gID);
+		}
+	}
+	
+	/**
+     * Delete a challenge instance
+     *
+	 * @url GET /deleteChallengeInstance/:gID
+     */
+    public function deleteChallengeInstance($cID)
+    {
+    	if(0 < $gID)
+		{
+			DeleteChallengeInstance::Execute($gID);
+		}
+	}
 }
 ?>

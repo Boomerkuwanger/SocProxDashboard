@@ -1,29 +1,17 @@
 <?php
-$text = "b055inGH4rd!";
-if(!empty($_POST)){
-	//TODO: Check to see if these are set, else return an error to submission form
-	if(isset($_POST["username"]))
-	{
-		$inputUsername = $_POST["username"];
-		$usersReturn = json_decode(file_get_contents("http://cjcornell.com/bluegame/REST/users"), true);
-        $users = $usersReturn['body'];
-		foreach($users as $user)
-		{
-			if($user["m_strUsername"] === $inputUsername && isset($_POST["password"]))
-			{
-				$strPassword = $_POST["password"];
-				if($user["m_strPassword"] === $strPassword)
-				{
-					
-				}
-			}
-		}
-	}
-	
-	$intService = $_POST["service"];      
-	 
+include "../Database/ctrlHead.php";
+//Retrieve the name and password
+$name = $_GET["e"];
+$password = $_GET["p"];
+$text = "socProx!";
+if(isset($_GET["e"])){
+    //Retrieve the email
+    $email = $_GET["e"];
+    $sql = "SELECT * FROM Users WHERE Username='$name' OR Email='$email'";
+    $users = mysqli_query($con,$sql);
     $result = "";
-    
+    while($json = mysqli_fetch_array($users))
+    {
         if(!strcmp($json['Username'],$name)) {
             $usrErr = true;
             $result = $result . "Username already exists ";
@@ -37,7 +25,7 @@ if(!empty($_POST)){
         }
         echo $result;
         return NULL;
-    
+    }
 
     $sql = "INSERT INTO Users (Username, Email, Password, Admin) VALUES ('$name', '$email', AES_ENCRYPT('$text', '$password'), '0')";
     if (mysqli_query($con,$sql))
@@ -64,4 +52,5 @@ if(!empty($_POST)){
     }
 }
 
+include "../Database/ctrlTail.php";
 ?>

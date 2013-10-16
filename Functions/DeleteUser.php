@@ -6,12 +6,13 @@ require_once '/home/content/c/j/c/cjcornell3/html/bluegame/Database/DB_Controlle
 class DeleteUser {
 	
 	private static $m_oUser;
-    public static function Execute ($Id)
+    public static function Execute ($userId)
     {	
-		$user = self::prepareDeletedUser($Id);
+		self::$m_oUser = self::prepareDeletedUser($userId);
 		// Call database function
-		DB_Controller::DeleteUser($user);
-        DB_Controller::Log("User", "Deleted User with Id = $user->ID()");
+		//print_r(self::$m_oUser . "\n" . $m_oUser);
+		DB_Controller::DeleteUser(self::$m_oUser);
+        DB_Controller::Log("User", "Deleted User with Id = $m_oUser->ID()");
         return 0;
 	}
 //TODO: AFAM have all database functions use their private object variable instead of a random var
